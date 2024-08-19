@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+<rss version="2.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/" >
+<channel>
+<title>pages tagged embeded</title>
+<link>http://mat-laptop/~mat/myblog/tags/embeded/</link>
+<description>myblog</description>
+<item>
+
+	<title>Matthieu Castet: garbage collection</title>
+	<dcterms:creator>Matthieu Castet</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/posts/link_gc/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/posts/link_gc/</link>
+
+
+	<category>/tags/embeded</category>
+
+
+	<pubDate>Thu, 16 Jun 2011 22:51:18 +0200</pubDate>
+	<dcterms:modified>2011-07-08T21:58:05Z</dcterms:modified>
+
+	<description>&lt;h1&gt;link garbage collection&lt;/h1&gt;
+
+&lt;p&gt;link gc can be activated with :&lt;/p&gt;
+
+&lt;pre&gt;
+CFLAGS+=-fdata-sections -fno-common
+CFLAGS+=-ffunction-sections
+LDOPTS+=-Wl,--gc-sections -Wl,--print-gc-sections -Wl,--entry=entry
+&lt;/pre&gt;
+
+&lt;p&gt;The compiler (CFLAGS) options will make each function it is own section.
+The linker (LDOPTS) option will make the linker, include all code/date
+used by the entry function, and garbage collect all other code.&lt;/p&gt;
+
+&lt;p&gt;These option can be a win on large project, but this imply overhead in code.&lt;/p&gt;
+
+&lt;p&gt;In the normal mode, gcc put all code/data of a file in one section. And in this
+section stuff can&#39;t be moved by the linker.&lt;/p&gt;
+
+&lt;p&gt;But now gcc don&#39;t know how the linker will organise section and can cause
+overhead.&lt;/p&gt;
+
+&lt;h2&gt;fdata-sections overhead&lt;/h2&gt;
+
+&lt;p&gt;For example it will incread code size when accessing global data :&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; bar&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; titi&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; tata&lt;span class=&quot;hl sym&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; foo&lt;span class=&quot;hl sym&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;toto&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;hl kwb&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; foo&lt;span class=&quot;hl sym&quot;&gt;+&lt;/span&gt;tata&lt;span class=&quot;hl sym&quot;&gt;+&lt;/span&gt;titi&lt;span class=&quot;hl sym&quot;&gt;+&lt;/span&gt;bar&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+bar and titi are in bss
+tata and foo in data&lt;/p&gt;
+
+&lt;p&gt;arm-none-eabi-gcc -Os -c
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl num&quot;&gt;00000000&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;toto&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3020 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 28 &amp;lt;toto+0x28&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e8930005 	ldm	r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r0, r2}&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800002 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r2
+   c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3018 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 2c &amp;lt;toto+0x2c&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5933000 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3010 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 30 &amp;lt;toto+0x30&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5933000 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e12fff1e 	&lt;span class=&quot;hl kwb&quot;&gt;bx&lt;/span&gt;	lr
+  &lt;span class=&quot;hl num&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;arm-none-eabi-gcc -Os -fno-common -c
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl num&quot;&gt;00000000&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;toto&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3018 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 20 &amp;lt;toto+0x20&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e8930005 	ldm	r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r0, r2}&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800002 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r2
+   c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3010 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 24 &amp;lt;toto+0x24&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e893000c 	ldm	r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r2, r3}&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800002 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r2
+  &lt;span class=&quot;hl num&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e12fff1e 	&lt;span class=&quot;hl kwb&quot;&gt;bx&lt;/span&gt;	lr
+  &lt;span class=&quot;hl num&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;arm-none-eabi-gcc -Os -fno-common -fdata-sections -c
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl num&quot;&gt;00000000&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;toto&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3028 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 30 &amp;lt;toto+0x30&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5930000 	ldr	r0&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3024 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 34 &amp;lt;toto+0x34&amp;gt;&lt;/span&gt;
+   c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5933000 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f301c 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 38 &amp;lt;toto+0x38&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5933000 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e59f3014 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;	&lt;span class=&quot;hl slc&quot;&gt;; 3c &amp;lt;toto+0x3c&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e5933000 	ldr	r3&lt;span class=&quot;hl sym&quot;&gt;, [&lt;/span&gt;r3&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e0800003 	&lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;	r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3
+  &lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;	e12fff1e 	&lt;span class=&quot;hl kwb&quot;&gt;bx&lt;/span&gt;	lr
+  &lt;span class=&quot;hl num&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;38&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;hl num&quot;&gt;3&lt;/span&gt;c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that &lt;strong&gt;-fno-common&lt;/strong&gt; can help to generate better code with bss data.&lt;/p&gt;
+
+&lt;h3&gt;optimisation&lt;/h3&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;2 pass build : detect unused stuff and build and optimised version.&lt;/li&gt;
+    &lt;li&gt;linker to patch the generated code ?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;ffunction-sections overhead&lt;/h2&gt;
+
+&lt;p&gt;Gcc sometimes need to use trampoline.&lt;/p&gt;
+
+&lt;p&gt;For example on armv4t, there is not blx instruction. codesourcery arm-2011.03 (elf target) generate code like :
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl num&quot;&gt;000&lt;/span&gt;c7848 &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;conf_load_defaults&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   c7848&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       b538            &lt;span class=&quot;hl kwa&quot;&gt;push&lt;/span&gt;    &lt;span class=&quot;hl com&quot;&gt;{r3, r4, r5, lr}&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   c7870&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       f000 f812       &lt;span class=&quot;hl kwb&quot;&gt;bl&lt;/span&gt;      c7898 &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;&lt;u&gt;memcpy_from_thumb&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   c7888&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       bc01            &lt;span class=&quot;hl kwa&quot;&gt;pop&lt;/span&gt;     &lt;span class=&quot;hl com&quot;&gt;{r0}&lt;/span&gt;
+   c788a&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;hl num&quot;&gt;4700&lt;/span&gt;            &lt;span class=&quot;hl kwb&quot;&gt;bx&lt;/span&gt;      r0&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl num&quot;&gt;000&lt;/span&gt;c7898 &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;&lt;u&gt;memcpy_from_thumb&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   c7898&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;hl num&quot;&gt;4778&lt;/span&gt;            &lt;span class=&quot;hl kwb&quot;&gt;bx&lt;/span&gt;      pc
+   c789a&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;hl num&quot;&gt;46&lt;/span&gt;c0            &lt;span class=&quot;hl kwa&quot;&gt;nop&lt;/span&gt;                     &lt;span class=&quot;hl slc&quot;&gt;; (mov r8, r8)&lt;/span&gt;
+   c789c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       eaff630f        b       a04e0 &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;memcpy&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;
+and with ffunction-sections, there is lot&#39;s of &lt;/u&gt;memcpy_from_thumb in different section and the linker doesn&#39;t merge them.&lt;/p&gt;
+
+&lt;p&gt;In fact gcc generate
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;hl num&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;   f7ff fffe       &lt;span class=&quot;hl kwb&quot;&gt;bl&lt;/span&gt;      &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;memcpy&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+and the linker patch the code !!!&lt;/p&gt;
+
+&lt;p&gt;Note : there was lot&#39;s of &lt;u&gt;memcpy_from_thumb if we din&#39;t merge .text* in the linker script.&lt;/u&gt;&lt;/p&gt;
+
+&lt;h3&gt;armv5t&lt;/h3&gt;
+
+&lt;p&gt;using armv5t, we got
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl num&quot;&gt;000&lt;/span&gt;c538c &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;conf_load_defaults&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;:&lt;/span&gt;
+   c538c&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       b538            &lt;span class=&quot;hl kwa&quot;&gt;push&lt;/span&gt;    &lt;span class=&quot;hl com&quot;&gt;{r3, r4, r5, lr}&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   c53b4&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       f7da eea4       blx     a0100 &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&lt;/span&gt;memcpy&lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;[&lt;/span&gt;&amp;hellip;&lt;span class=&quot;hl sym&quot;&gt;]&lt;/span&gt;
+   c53c8&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;       bd38            &lt;span class=&quot;hl kwa&quot;&gt;pop&lt;/span&gt;     &lt;span class=&quot;hl com&quot;&gt;{r3, r4, r5, pc}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;h1&gt;other optimisation&lt;/h1&gt;
+
+&lt;h2&gt;build one big source file&lt;/h2&gt;
+
+&lt;p&gt;make static the default stuff :&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;-fwhole-program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;agregate all source file in one :&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;-combine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Eat lot&#39;s of memory&lt;/p&gt;
+
+&lt;h2&gt;LTO&lt;/h2&gt;
+
+&lt;h1&gt;Extra notes&lt;/h1&gt;
+
+&lt;h2&gt;script to compare code&lt;/h2&gt;
+
+&lt;p&gt;For comparing function size of 2 binaries, we can use&lt;/p&gt;
+
+&lt;pre&gt;
+readelf -W -s prog1.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk &#39;{ print $3&quot; &quot;$8 }&#39; &amp;gt; dump1
+readelf -W -s prog2.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk &#39;{ print $3&quot; &quot;$8 }&#39; &amp;gt; dump2
+diff -u dump1 dump2
+&lt;/pre&gt;
+
+&lt;h2&gt;Thumb interworking&lt;/h2&gt;
+
+&lt;p&gt;http://wiki.debian.org/ArmEabiPort#Choice_of_minimum_CPU&lt;/p&gt;
+
+&lt;p&gt;Instruction safe for interworking :&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;mov pc,lr : starting armv7&lt;/li&gt;
+    &lt;li&gt;bx lr : starting armv4t&lt;/li&gt;
+    &lt;li&gt;ldm/ldr : starting armv5t&lt;/li&gt;
+    &lt;li&gt;blx : starting armv5t&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is a shame that arm did add thumb support from the start for normal branch operation&lt;/p&gt;
+
+</description>
+
+
+	<comments>http://mat-laptop/~mat/myblog/posts/link_gc/#comments</comments>
+
+</item>
+<item>
+
+	<title>Matthieu Castet: integer power of 2</title>
+	<dcterms:creator>Matthieu Castet</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/posts/2pow_opimisation2/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/posts/2pow_opimisation2/</link>
+
+
+	<category>/tags/embeded</category>
+
+
+	<pubDate>Fri, 29 Apr 2011 23:05:24 +0200</pubDate>
+	<dcterms:modified>2011-04-29T21:05:24Z</dcterms:modified>
+
+	<description>&lt;h3&gt;futher optimisation&lt;/h3&gt;
+
+&lt;p&gt;We saw than if B = 1 &amp;lt;&amp;lt; b, then&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;A * B == A &amp;lt;&amp;lt; b&lt;/li&gt;
+    &lt;li&gt;A / B == A &amp;gt;&amp;gt; b&lt;/li&gt;
+    &lt;li&gt;A % B == A &amp;amp; (B - 1) == A &amp;amp; ((1U &amp;lt;&amp;lt; b) - 1)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;But there are interesting property if we have 2 power of 2.&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;B1 * B2 == (1 &amp;lt;&amp;lt; b1) * (1 &amp;lt;&amp;lt; b2) == 1 &amp;lt;&amp;lt; (b1 + b2)&lt;/li&gt;
+    &lt;li&gt;B1 / B2&lt;/li&gt;
+&lt;ol&gt;
+    &lt;li&gt;if B1 &amp;gt;= B2, (1 &amp;lt;&amp;lt; b1) / (1 &amp;lt;&amp;lt; b2) == 1 &amp;lt;&amp;lt; (b1 - b2)&lt;/li&gt;
+    &lt;li&gt;if B1 &amp;lt; B2, 0&lt;/li&gt;
+&lt;/ol&gt;
+    &lt;li&gt;A / (B1 / B2) == A / (1 &amp;lt;&amp;lt; (b1 - b2)) == A &amp;gt;&amp;gt; (b1 - b2) because (B1 / B2) can&#39;t be null in C&lt;/li&gt;
+    &lt;li&gt;A * (B1 / B2)&lt;/li&gt;
+&lt;ol&gt;
+    &lt;li&gt;if b1 - b2 &amp;gt;= 0, A * (1 &amp;lt;&amp;lt; (b1 - b2)) == A &amp;lt;&amp;lt; (b1 - b2)&lt;/li&gt;
+    &lt;li&gt;if b1 - b2 &amp;lt; 0, 0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/ol&gt;
+&lt;p&gt;This means macro is not enough, but compiler isn&#39;t often clever to detect this.
+To have efficient code, better feed compiler with precomputed stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;divu3&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;/ ((&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;b&lt;span class=&quot;hl sym&quot;&gt;) /&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;divu300&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;/ (&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;(&lt;/span&gt;b&lt;span class=&quot;hl sym&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;divu3&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        stmfd   &lt;span class=&quot;hl kwb&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;!,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r3, lr}&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr #&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;hl kwb&quot;&gt;bl&lt;/span&gt;      &lt;span class=&quot;hl com&quot;&gt;{&lt;img src=&quot;http://mat-laptop/~mat/myblog/tags/embeded/__}&amp;lt;/span&amp;gt;&quot; /&gt;aeabi_uidiv
+        ldmfd   &lt;span class=&quot;hl kwb&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;!,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r3, pc}&lt;/span&gt;
+divu300&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;sub&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lr
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;PS : arm compiler is not able to optimize A / B and A * B &amp;hellip;&lt;/p&gt;
+
+</description>
+
+
+	<comments>http://mat-laptop/~mat/myblog/posts/2pow_opimisation2/#comments</comments>
+
+</item>
+<item>
+
+	<title>fatfs</title>
+
+
+	<guid>http://mat-laptop/~mat/myblog/posts/fatfs/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/posts/fatfs/</link>
+
+
+	<category>/tags/embeded</category>
+
+
+	<pubDate>Thu, 28 Apr 2011 23:19:15 +0200</pubDate>
+	<dcterms:modified>2011-04-28T21:19:15Z</dcterms:modified>
+
+	<description>&lt;h3&gt;FATFS&lt;/h3&gt;
+
+&lt;p&gt;A tiny fatfs implementation can be found at &lt;a href=&quot;http://elm-chan.org/fsw/ff/00index_e.html&quot;&gt;http://elm-chan.org/fsw/ff/00index_e.html&lt;/a&gt; and petit implementation.&lt;/p&gt;
+
+&lt;p&gt;After looking at the code, it seems there is a problem in the code : it assumes
+fat sector size should match hardware sector size.&lt;/p&gt;
+
+&lt;p&gt;This is not true, fat sector size only need to be &amp;gt;= hardware sector size&lt;/p&gt;
+
+&lt;p&gt;Also the power of 2 trick can be used.&lt;/p&gt;
+
+&lt;p&gt;Note the guy got interresting SPI mmc stuff &lt;a href=&quot;http://elm-chan.org/docs/mmc/mmc_e.html&quot;&gt;http://elm-chan.org/docs/mmc/mmc_e.html&lt;/a&gt;&lt;/p&gt;
+
+</description>
+
+
+	<comments>http://mat-laptop/~mat/myblog/posts/fatfs/#comments</comments>
+
+</item>
+<item>
+
+	<title>Matthieu Castet: power of 2 arithmetic</title>
+	<dcterms:creator>Matthieu Castet</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/posts/2pow_opimisation/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/posts/2pow_opimisation/</link>
+
+
+	<category>/tags/embeded</category>
+
+
+	<pubDate>Tue, 26 Apr 2011 22:38:20 +0200</pubDate>
+	<dcterms:modified>2011-04-28T20:33:09Z</dcterms:modified>
+
+	<description>&lt;h3&gt;Theory&lt;/h3&gt;
+
+&lt;p&gt;Suppose we have 2 unsigned integer &lt;strong&gt;A&lt;/strong&gt; and &lt;strong&gt;B&lt;/strong&gt;.
+&lt;strong&gt;B&lt;/strong&gt; is a power of 2 ie there is a number &lt;strong&gt;b&lt;/strong&gt; such as
+&lt;strong&gt;B&lt;/strong&gt; = 1U &amp;lt;&amp;lt; &lt;strong&gt;b&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It can be checked with the following code&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hl kwc&quot;&gt;inline&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;ispowerof2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; b&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt;
+	&lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; b &lt;span class=&quot;hl sym&quot;&gt;&amp;amp; !(&lt;/span&gt;b &lt;span class=&quot;hl sym&quot;&gt;&amp;amp; (&lt;/span&gt;b &lt;span class=&quot;hl sym&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;b&lt;/strong&gt; can be computed by ilog2 function
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;ilog2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;hl kwb&quot;&gt;unsigned int&lt;/span&gt; v&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt;
+	&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;hl sym&quot;&gt;= -&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;hl kwa&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;v&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt;
+		i&lt;span class=&quot;hl sym&quot;&gt;++;&lt;/span&gt;
+		v &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; v&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;or from &lt;span class=&quot;createlink&quot;&gt;http://en.wikipedia.org/wiki/Binary logarithm#Integer&lt;/span&gt;
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl com&quot;&gt;/&lt;strong&gt;&lt;/span&gt;
+&lt;span class=&quot;hl com&quot;&gt; * Returns the floor form of binary logarithm for a 32 bit integer.&lt;/span&gt;
+&lt;span class=&quot;hl com&quot;&gt; * −1 is returned if &#39;&#39;n&#39;&#39; is 0.&lt;/span&gt;
+&lt;span class=&quot;hl com&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;floorLog2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;hl kwb&quot;&gt;unsigned int&lt;/span&gt; n&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; pos &lt;span class=&quot;hl sym&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt; n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt; pos &lt;span class=&quot;hl sym&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;; }&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt; n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt; pos &lt;span class=&quot;hl sym&quot;&gt;+=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;; }&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt; n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt; pos &lt;span class=&quot;hl sym&quot;&gt;+=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;; }&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt; n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt; pos &lt;span class=&quot;hl sym&quot;&gt;+=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;; }&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;hl sym&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;) {&lt;/span&gt;           pos &lt;span class=&quot;hl sym&quot;&gt;+=&lt;/span&gt;  &lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;; }&lt;/span&gt;
+  &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; pos&lt;span class=&quot;hl sym&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case we have :&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;A * B == A &amp;lt;&amp;lt; b&lt;/li&gt;
+    &lt;li&gt;A / B == A &amp;gt;&amp;gt; b&lt;/li&gt;
+    &lt;li&gt;A % B == A &amp;amp; (B - 1) == A &amp;amp; ((1U &amp;lt;&amp;lt; b) - 1)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Usage in C&lt;/h2&gt;
+
+&lt;p&gt;Either we can define your own function for &lt;tt&gt;* / %&lt;/tt&gt; or we can use compiler
+optimisation.
+If we replace B by &lt;tt&gt;1 &amp;lt;&amp;lt; b&lt;/tt&gt; (with a macro), then&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;divu&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;/ (&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; b&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;modu&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;% (&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; b&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;mulu&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;* (&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; b&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;will give you in arm assembly (arm-linux-gnueabi-gcc -Os -S )&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;divu&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lr
+modu&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        mvn     r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;0&lt;/span&gt;
+        bic     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lr
+mulu&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lr
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;That&#39;s pretty fast without ugly operator redefinition !!!&lt;/p&gt;
+
+&lt;p&gt;But add and sub are slower [1], because we need to compute the shift.&lt;/p&gt;
+
+&lt;p&gt;Note a gcc missoptimisation (&lt;a href=&quot;http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48812&quot;&gt;http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48812&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;divu3&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;/ ((&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;b&lt;span class=&quot;hl sym&quot;&gt;) /&lt;/span&gt; &lt;span class=&quot;hl num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;divu3&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        stmfd   &lt;span class=&quot;hl kwb&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;!,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r3, lr}&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr #&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;hl kwb&quot;&gt;bl&lt;/span&gt;      &lt;span class=&quot;hl com&quot;&gt;{&lt;img src=&quot;http://mat-laptop/~mat/myblog/tags/embeded/__}&amp;lt;/span&amp;gt;&quot; /&gt;aeabi_uidiv
+        ldmfd   &lt;span class=&quot;hl kwb&quot;&gt;sp&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;!,&lt;/span&gt; &lt;span class=&quot;hl com&quot;&gt;{r3, pc}&lt;/span&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;This is unfortunate, the compiler could have generated :&lt;/p&gt;
+
+&lt;p&gt;&lt;pre class=&quot;hl&quot;&gt;divu3&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r1&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr #&lt;span class=&quot;hl num&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lsr r1
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]
+&lt;pre class=&quot;hl&quot;&gt;&lt;span class=&quot;hl kwb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hl kwd&quot;&gt;addu&lt;/span&gt;&lt;span class=&quot;hl sym&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; uint b&lt;span class=&quot;hl sym&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;hl sym&quot;&gt;+ (&lt;/span&gt;&lt;span class=&quot;hl num&quot;&gt;1U&lt;/span&gt; &lt;span class=&quot;hl sym&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; b&lt;span class=&quot;hl sym&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;hl sym&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;pre class=&quot;hl&quot;&gt;addu&lt;span class=&quot;hl sym&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; #&lt;span class=&quot;hl num&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;hl kwa&quot;&gt;add&lt;/span&gt;     r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r0&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; r3&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; asl r1
+        &lt;span class=&quot;hl kwa&quot;&gt;mov&lt;/span&gt;     pc&lt;span class=&quot;hl sym&quot;&gt;,&lt;/span&gt; lr
+&lt;/pre&gt;&lt;/p&gt;
+
+</description>
+
+
+	<comments>http://mat-laptop/~mat/myblog/posts/2pow_opimisation/#comments</comments>
+
+</item>
+
+</channel>
+</rss>

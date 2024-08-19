@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>04</title>
+
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../../../local.css" type="text/css" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../../../">myblog</a>/ 
+
+<a href="../../">archives</a>/ 
+
+<a href="../">2011</a>/ 
+
+</span>
+<span class="title">
+04
+
+</span>
+</span>
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+
+<li><a href="../../../recentchanges/">RecentChanges</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<div class="sidebar">
+<div><div class="calendar"><table class="month-calendar">
+    <tr>
+    <th class="month-calendar-arrow"><a href="../03/" title="March">&larr;</a></th>
+    <th class="month-calendar-head" colspan="5"><span class="selflink">Apr 2011</span></th>
+    <th class="month-calendar-arrow"><a href="../05/" title="May">&rarr;</a></th>
+    </tr>
+    <tr>
+        <th class="month-calendar-day-head Sunday" title="Sunday">S</th>
+        <th class="month-calendar-day-head Monday" title="Monday">M</th>
+        <th class="month-calendar-day-head Tuesday" title="Tuesday">T</th>
+        <th class="month-calendar-day-head Wednesday" title="Wednesday">W</th>
+        <th class="month-calendar-day-head Thursday" title="Thursday">T</th>
+        <th class="month-calendar-day-head Friday" title="Friday">F</th>
+        <th class="month-calendar-day-head Saturday" title="Saturday">S</th>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-noday Sunday">&nbsp;</td>
+        <td class="month-calendar-day-noday Monday">&nbsp;</td>
+        <td class="month-calendar-day-noday Tuesday">&nbsp;</td>
+        <td class="month-calendar-day-noday Wednesday">&nbsp;</td>
+        <td class="month-calendar-day-noday Thursday">&nbsp;</td>
+        <td class="month-calendar-day-nolink Friday">1</td>
+        <td class="month-calendar-day-nolink Saturday">2</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">3</td>
+        <td class="month-calendar-day-nolink Monday">4</td>
+        <td class="month-calendar-day-nolink Tuesday">5</td>
+        <td class="month-calendar-day-nolink Wednesday">6</td>
+        <td class="month-calendar-day-nolink Thursday">7</td>
+        <td class="month-calendar-day-nolink Friday">8</td>
+        <td class="month-calendar-day-nolink Saturday">9</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">10</td>
+        <td class="month-calendar-day-nolink Monday">11</td>
+        <td class="month-calendar-day-nolink Tuesday">12</td>
+        <td class="month-calendar-day-nolink Wednesday">13</td>
+        <td class="month-calendar-day-nolink Thursday">14</td>
+        <td class="month-calendar-day-nolink Friday">15</td>
+        <td class="month-calendar-day-nolink Saturday">16</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">17</td>
+        <td class="month-calendar-day-nolink Monday">18</td>
+        <td class="month-calendar-day-nolink Tuesday">19</td>
+        <td class="month-calendar-day-nolink Wednesday">20</td>
+        <td class="month-calendar-day-nolink Thursday">21</td>
+        <td class="month-calendar-day-nolink Friday">22</td>
+        <td class="month-calendar-day-nolink Saturday">23</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">24</td>
+        <td class="month-calendar-day-nolink Monday">25</td>
+        <td class="month-calendar-day-link Tuesday"><a href="../../../posts/2pow_opimisation/" title="2pow opimisation">26</a></td>
+        <td class="month-calendar-day-nolink Wednesday">27</td>
+        <td class="month-calendar-day-link Thursday"><a href="../../../posts/fatfs/" title="fatfs">28</a></td>
+        <td class="month-calendar-day-link Friday"><a href="../../../posts/2pow_opimisation2/" title="2pow opimisation2">29</a></td>
+        <td class="month-calendar-day-nolink Saturday">30</td>
+    </tr>
+</table>
+</div></div>
+
+</div>
+
+
+<div id="pagebody">
+
+<div id="content">
+<div class="inlinepage">
+
+<div class="inlineheader">
+
+<span class="author">
+
+Matthieu Castet
+
+</span>
+
+<span class="header">
+
+<a href="../../../posts/2pow_opimisation/">power of 2 arithmetic</a>
+
+</span>
+</div>
+
+<div class="inlinecontent">
+<h3>Theory</h3>
+
+<p>Suppose we have 2 unsigned integer <strong>A</strong> and <strong>B</strong>.
+<strong>B</strong> is a power of 2 ie there is a number <strong>b</strong> such as
+<strong>B</strong> = 1U &lt;&lt; <strong>b</strong></p>
+
+<p>It can be checked with the following code</p>
+
+<p><pre class="hl"><span class="hl kwb">static</span> <span class="hl kwc">inline</span> <span class="hl kwd">ispowerof2</span><span class="hl sym">(</span><span class="hl kwb">int</span> b<span class="hl sym">) {</span>
+	<span class="hl kwa">return</span> b <span class="hl sym">&amp; !(</span>b <span class="hl sym">&amp; (</span>b <span class="hl sym">-</span> <span class="hl num">1</span><span class="hl sym">));</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p><strong>b</strong> can be computed by ilog2 function
+<pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">ilog2</span><span class="hl sym">(</span><span class="hl kwb">unsigned int</span> v<span class="hl sym">) {</span>
+	<span class="hl kwb">int</span> i <span class="hl sym">= -</span><span class="hl num">1</span><span class="hl sym">;</span>
+	<span class="hl kwa">while</span><span class="hl sym">(</span>v<span class="hl sym">) {</span>
+		i<span class="hl sym">++;</span>
+		v <span class="hl sym">&gt;&gt;=</span> <span class="hl num">1</span><span class="hl sym">;</span>
+	<span class="hl sym">}</span>
+	<span class="hl kwa">return</span> v<span class="hl sym">;</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p>or from <span class="createlink">http://en.wikipedia.org/wiki/Binary logarithm#Integer</span>
+<pre class="hl"><span class="hl com">/<strong></span>
+<span class="hl com"> * Returns the floor form of binary logarithm for a 32 bit integer.</span>
+<span class="hl com"> * −1 is returned if ''n'' is 0.</span>
+<span class="hl com"> */</span>
+<span class="hl kwb">int</span> <span class="hl kwd">floorLog2</span><span class="hl sym">(</span><span class="hl kwb">unsigned int</span> n<span class="hl sym">) {</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">==</span> <span class="hl num">0</span><span class="hl sym">)</span>
+    <span class="hl kwa">return</span> <span class="hl sym">-</span><span class="hl num">1</span><span class="hl sym">;</span></strong></p>
+
+<p><span class="hl kwb">int</span> pos <span class="hl sym">=</span> <span class="hl num">0</span><span class="hl sym">;</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">&gt;=</span> <span class="hl num">1</span><span class="hl sym">&lt;&lt;</span><span class="hl num">16</span><span class="hl sym">) {</span> n <span class="hl sym">&gt;&gt;=</span> <span class="hl num">16</span><span class="hl sym">;</span> pos <span class="hl sym">+=</span> <span class="hl num">16</span><span class="hl sym">; }</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">&gt;=</span> <span class="hl num">1</span><span class="hl sym">&lt;&lt;</span> <span class="hl num">8</span><span class="hl sym">) {</span> n <span class="hl sym">&gt;&gt;=</span>  <span class="hl num">8</span><span class="hl sym">;</span> pos <span class="hl sym">+=</span>  <span class="hl num">8</span><span class="hl sym">; }</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">&gt;=</span> <span class="hl num">1</span><span class="hl sym">&lt;&lt;</span> <span class="hl num">4</span><span class="hl sym">) {</span> n <span class="hl sym">&gt;&gt;=</span>  <span class="hl num">4</span><span class="hl sym">;</span> pos <span class="hl sym">+=</span>  <span class="hl num">4</span><span class="hl sym">; }</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">&gt;=</span> <span class="hl num">1</span><span class="hl sym">&lt;&lt;</span> <span class="hl num">2</span><span class="hl sym">) {</span> n <span class="hl sym">&gt;&gt;=</span>  <span class="hl num">2</span><span class="hl sym">;</span> pos <span class="hl sym">+=</span>  <span class="hl num">2</span><span class="hl sym">; }</span>
+  <span class="hl kwa">if</span> <span class="hl sym">(</span>n <span class="hl sym">&gt;=</span> <span class="hl num">1</span><span class="hl sym">&lt;&lt;</span> <span class="hl num">1</span><span class="hl sym">) {</span>           pos <span class="hl sym">+=</span>  <span class="hl num">1</span><span class="hl sym">; }</span>
+  <span class="hl kwa">return</span> pos<span class="hl sym">;</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p>In this case we have :</p>
+
+<ol>
+    <li>A * B == A &lt;&lt; b</li>
+    <li>A / B == A &gt;&gt; b</li>
+    <li>A % B == A &amp; (B - 1) == A &amp; ((1U &lt;&lt; b) - 1)</li>
+</ol>
+<h2>Usage in C</h2>
+
+<p>Either we can define your own function for <tt>* / %</tt> or we can use compiler
+optimisation.
+If we replace B by <tt>1 &lt;&lt; b</tt> (with a macro), then</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">divu</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ (</span><span class="hl num">1U</span> <span class="hl sym">&lt;&lt;</span> b<span class="hl sym">);</span>
+<span class="hl sym">}</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">modu</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">% (</span><span class="hl num">1U</span> <span class="hl sym">&lt;&lt;</span> b<span class="hl sym">);</span>
+<span class="hl sym">}</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">mulu</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">* (</span><span class="hl num">1U</span> <span class="hl sym">&lt;&lt;</span> b<span class="hl sym">);</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p>will give you in arm assembly (arm-linux-gnueabi-gcc -Os -S )</p>
+
+<p><pre class="hl">divu<span class="hl sym">:</span>
+        <span class="hl kwa">mov</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> lsr r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+modu<span class="hl sym">:</span>
+        mvn     r3<span class="hl sym">,</span> #<span class="hl num">0</span>
+        bic     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+mulu<span class="hl sym">:</span>
+        <span class="hl kwa">mov</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+</pre></p>
+
+<p>That's pretty fast without ugly operator redefinition !!!</p>
+
+<p>But add and sub are slower [1], because we need to compute the shift.</p>
+
+<p>Note a gcc missoptimisation (<a href="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48812">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48812</a>)</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">divu3</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ ((</span><span class="hl num">1U</span><span class="hl sym">&lt;&lt;</span>b<span class="hl sym">) /</span> <span class="hl num">4</span><span class="hl sym">);</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p><pre class="hl">divu3<span class="hl sym">:</span>
+        stmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, lr}</span>
+        <span class="hl kwa">mov</span>     r3<span class="hl sym">,</span> #<span class="hl num">1</span>
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> lsr #<span class="hl num">2</span>
+        <span class="hl kwb">bl</span>      <span class="hl com">{<img src="__}&lt;/span&gt;" />aeabi_uidiv
+        ldmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, pc}</span>
+</pre></p>
+
+<p>This is unfortunate, the compiler could have generated :</p>
+
+<p><pre class="hl">divu3<span class="hl sym">:</span>
+        <span class="hl kwa">mov</span>     r3<span class="hl sym">,</span> #<span class="hl num">1</span>
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> lsr #<span class="hl num">2</span>
+        <span class="hl kwa">mov</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> lsr r1
+</pre></p>
+
+<p>[1]
+<pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">addu</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">+ (</span><span class="hl num">1U</span> <span class="hl sym">&lt;&lt;</span> b<span class="hl sym">);</span>
+<span class="hl sym">}</span>
+</pre>
+<pre class="hl">addu<span class="hl sym">:</span>
+        <span class="hl kwa">mov</span>     r3<span class="hl sym">,</span> #<span class="hl num">1</span>
+        <span class="hl kwa">add</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+</pre></p>
+
+
+</div>
+
+<div class="inlinefooter">
+
+<span class="pagedate">
+Posted <span class="date">Tue Apr 26 22:38:20 2011</span>
+</span>
+
+
+<span class="tags">
+Tags:
+
+<a href="../../../tags/embeded/" rel="tag">embeded</a>
+
+</span>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+<div class="inlinepage">
+
+<div class="inlineheader">
+
+<span class="header">
+
+<a href="../../../posts/fatfs/">fatfs</a>
+
+</span>
+</div>
+
+<div class="inlinecontent">
+<h3>FATFS</h3>
+
+<p>A tiny fatfs implementation can be found at <a href="http://elm-chan.org/fsw/ff/00index_e.html">http://elm-chan.org/fsw/ff/00index_e.html</a> and petit implementation.</p>
+
+<p>After looking at the code, it seems there is a problem in the code : it assumes
+fat sector size should match hardware sector size.</p>
+
+<p>This is not true, fat sector size only need to be &gt;= hardware sector size</p>
+
+<p>Also the power of 2 trick can be used.</p>
+
+<p>Note the guy got interresting SPI mmc stuff <a href="http://elm-chan.org/docs/mmc/mmc_e.html">http://elm-chan.org/docs/mmc/mmc_e.html</a></p>
+
+
+</div>
+
+<div class="inlinefooter">
+
+<span class="pagedate">
+Posted <span class="date">Thu Apr 28 23:19:15 2011</span>
+</span>
+
+
+<span class="tags">
+Tags:
+
+<a href="../../../tags/embeded/" rel="tag">embeded</a>
+
+</span>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+<div class="inlinepage">
+
+<div class="inlineheader">
+
+<span class="author">
+
+Matthieu Castet
+
+</span>
+
+<span class="header">
+
+<a href="../../../posts/2pow_opimisation2/">integer power of 2</a>
+
+</span>
+</div>
+
+<div class="inlinecontent">
+<h3>futher optimisation</h3>
+
+<p>We saw than if B = 1 &lt;&lt; b, then</p>
+
+<ol>
+    <li>A * B == A &lt;&lt; b</li>
+    <li>A / B == A &gt;&gt; b</li>
+    <li>A % B == A &amp; (B - 1) == A &amp; ((1U &lt;&lt; b) - 1)</li>
+</ol>
+<p>But there are interesting property if we have 2 power of 2.</p>
+
+<ol>
+    <li>B1 * B2 == (1 &lt;&lt; b1) * (1 &lt;&lt; b2) == 1 &lt;&lt; (b1 + b2)</li>
+    <li>B1 / B2</li>
+<ol>
+    <li>if B1 &gt;= B2, (1 &lt;&lt; b1) / (1 &lt;&lt; b2) == 1 &lt;&lt; (b1 - b2)</li>
+    <li>if B1 &lt; B2, 0</li>
+</ol>
+    <li>A / (B1 / B2) == A / (1 &lt;&lt; (b1 - b2)) == A &gt;&gt; (b1 - b2) because (B1 / B2) can't be null in C</li>
+    <li>A * (B1 / B2)</li>
+<ol>
+    <li>if b1 - b2 &gt;= 0, A * (1 &lt;&lt; (b1 - b2)) == A &lt;&lt; (b1 - b2)</li>
+    <li>if b1 - b2 &lt; 0, 0</li>
+</ol>
+</ol>
+<p>This means macro is not enough, but compiler isn't often clever to detect this.
+To have efficient code, better feed compiler with precomputed stuff.</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">divu3</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ ((</span><span class="hl num">1U</span><span class="hl sym">&lt;&lt;</span>b<span class="hl sym">) /</span> <span class="hl num">4</span><span class="hl sym">);</span>
+<span class="hl sym">}</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">divu300</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ (</span><span class="hl num">1</span><span class="hl sym">&lt;&lt;(</span>b<span class="hl sym">-</span><span class="hl num">2</span><span class="hl sym">));</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p><pre class="hl">divu3<span class="hl sym">:</span>
+        stmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, lr}</span>
+        <span class="hl kwa">mov</span>     r3<span class="hl sym">,</span> #<span class="hl num">1</span>
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> lsr #<span class="hl num">2</span>
+        <span class="hl kwb">bl</span>      <span class="hl com">{<img src="__}&lt;/span&gt;" />aeabi_uidiv
+        ldmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, pc}</span>
+divu300<span class="hl sym">:</span>
+        <span class="hl kwa">sub</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> #<span class="hl num">2</span>
+        <span class="hl kwa">mov</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> lsr r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+</pre></p>
+
+<p>PS : arm compiler is not able to optimize A / B and A * B &hellip;</p>
+
+
+</div>
+
+<div class="inlinefooter">
+
+<span class="pagedate">
+Posted <span class="date">Fri Apr 29 23:05:24 2011</span>
+</span>
+
+
+<span class="tags">
+Tags:
+
+<a href="../../../tags/embeded/" rel="tag">embeded</a>
+
+</span>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+<div id="footer" class="pagefooter">
+
+<div id="pageinfo">
+
+
+
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="date">Sun Apr  3 14:44:24 2011</span>
+<!-- Created <span class="date">Sun Apr  3 14:41:16 2011</span> -->
+</div>
+
+</div>
+
+
+<!-- from myblog -->
+</div>
+
+</div>
+
+</body>
+</html>

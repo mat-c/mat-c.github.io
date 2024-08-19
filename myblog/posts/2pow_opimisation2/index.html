@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>integer power of 2</title>
+
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../../local.css" type="text/css" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../../">myblog</a>/ 
+
+<a href="../">posts</a>/ 
+
+</span>
+<span class="title">
+integer power of 2
+
+</span>
+</span>
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+
+<li><a href="../../recentchanges/">RecentChanges</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+
+<div id="pagebody">
+
+<div id="content">
+<h3>futher optimisation</h3>
+
+<p>We saw than if B = 1 &lt;&lt; b, then</p>
+
+<ol>
+    <li>A * B == A &lt;&lt; b</li>
+    <li>A / B == A &gt;&gt; b</li>
+    <li>A % B == A &amp; (B - 1) == A &amp; ((1U &lt;&lt; b) - 1)</li>
+</ol>
+<p>But there are interesting property if we have 2 power of 2.</p>
+
+<ol>
+    <li>B1 * B2 == (1 &lt;&lt; b1) * (1 &lt;&lt; b2) == 1 &lt;&lt; (b1 + b2)</li>
+    <li>B1 / B2</li>
+<ol>
+    <li>if B1 &gt;= B2, (1 &lt;&lt; b1) / (1 &lt;&lt; b2) == 1 &lt;&lt; (b1 - b2)</li>
+    <li>if B1 &lt; B2, 0</li>
+</ol>
+    <li>A / (B1 / B2) == A / (1 &lt;&lt; (b1 - b2)) == A &gt;&gt; (b1 - b2) because (B1 / B2) can't be null in C</li>
+    <li>A * (B1 / B2)</li>
+<ol>
+    <li>if b1 - b2 &gt;= 0, A * (1 &lt;&lt; (b1 - b2)) == A &lt;&lt; (b1 - b2)</li>
+    <li>if b1 - b2 &lt; 0, 0</li>
+</ol>
+</ol>
+<p>This means macro is not enough, but compiler isn't often clever to detect this.
+To have efficient code, better feed compiler with precomputed stuff.</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> <span class="hl kwd">divu3</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ ((</span><span class="hl num">1U</span><span class="hl sym">&lt;&lt;</span>b<span class="hl sym">) /</span> <span class="hl num">4</span><span class="hl sym">);</span>
+<span class="hl sym">}</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">divu300</span><span class="hl sym">(</span>uint a<span class="hl sym">,</span> uint b<span class="hl sym">)</span>
+<span class="hl sym">{</span>
+        <span class="hl kwa">return</span> a <span class="hl sym">/ (</span><span class="hl num">1</span><span class="hl sym">&lt;&lt;(</span>b<span class="hl sym">-</span><span class="hl num">2</span><span class="hl sym">));</span>
+<span class="hl sym">}</span>
+</pre></p>
+
+<p><pre class="hl">divu3<span class="hl sym">:</span>
+        stmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, lr}</span>
+        <span class="hl kwa">mov</span>     r3<span class="hl sym">,</span> #<span class="hl num">1</span>
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r3<span class="hl sym">,</span> asl r1
+        <span class="hl kwa">mov</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> lsr #<span class="hl num">2</span>
+        <span class="hl kwb">bl</span>      <span class="hl com">{<img src="__}&lt;/span&gt;" />aeabi_uidiv
+        ldmfd   <span class="hl kwb">sp</span><span class="hl sym">!,</span> <span class="hl com">{r3, pc}</span>
+divu300<span class="hl sym">:</span>
+        <span class="hl kwa">sub</span>     r1<span class="hl sym">,</span> r1<span class="hl sym">,</span> #<span class="hl num">2</span>
+        <span class="hl kwa">mov</span>     r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> lsr r1
+        <span class="hl kwa">mov</span>     pc<span class="hl sym">,</span> lr
+</pre></p>
+
+<p>PS : arm compiler is not able to optimize A / B and A * B &hellip;</p>
+
+
+</div>
+
+
+
+<div id="comments">
+
+
+
+
+<div class="addcomment">Comments on this page are closed.</div>
+
+</div>
+
+
+
+</div>
+
+<div id="footer" class="pagefooter">
+
+<div id="pageinfo">
+
+
+<div class="tags">
+Tags:
+
+<a href="../../tags/embeded/" rel="tag">embeded</a>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="date">Fri Apr 29 23:05:24 2011</span>
+<!-- Created <span class="date">Fri Apr 29 23:05:24 2011</span> -->
+</div>
+
+</div>
+
+
+<!-- from myblog -->
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>garbage collection</title>
+
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../../local.css" type="text/css" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../../">myblog</a>/ 
+
+<a href="../">posts</a>/ 
+
+</span>
+<span class="title">
+garbage collection
+
+</span>
+</span>
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+
+<li><a href="../../recentchanges/">RecentChanges</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+
+<div id="pagebody">
+
+<div id="content">
+<h1>link garbage collection</h1>
+
+<p>link gc can be activated with :</p>
+
+<pre>
+CFLAGS+=-fdata-sections -fno-common
+CFLAGS+=-ffunction-sections
+LDOPTS+=-Wl,--gc-sections -Wl,--print-gc-sections -Wl,--entry=entry
+</pre>
+
+<p>The compiler (CFLAGS) options will make each function it is own section.
+The linker (LDOPTS) option will make the linker, include all code/date
+used by the entry function, and garbage collect all other code.</p>
+
+<p>These option can be a win on large project, but this imply overhead in code.</p>
+
+<p>In the normal mode, gcc put all code/data of a file in one section. And in this
+section stuff can't be moved by the linker.</p>
+
+<p>But now gcc don't know how the linker will organise section and can cause
+overhead.</p>
+
+<h2>fdata-sections overhead</h2>
+
+<p>For example it will incread code size when accessing global data :</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> bar<span class="hl sym">;</span>
+<span class="hl kwb">int</span> titi<span class="hl sym">;</span>
+<span class="hl kwb">int</span> tata<span class="hl sym">=</span><span class="hl num">1</span><span class="hl sym">;</span>
+<span class="hl kwb">int</span> foo<span class="hl sym">=</span><span class="hl num">2</span><span class="hl sym">;</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">toto</span><span class="hl sym">(</span><span class="hl kwb">void</span><span class="hl sym">)</span>
+<span class="hl sym">{</span>
+    <span class="hl kwa">return</span> foo<span class="hl sym">+</span>tata<span class="hl sym">+</span>titi<span class="hl sym">+</span>bar<span class="hl sym">;</span>
+<span class="hl sym">}</span>
+</pre>
+bar and titi are in bss
+tata and foo in data</p>
+
+<p>arm-none-eabi-gcc -Os -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3020 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">32</span><span class="hl sym">]</span>	<span class="hl slc">; 28 &lt;toto+0x28&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e8930005 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r0, r2}</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+   c<span class="hl sym">:</span>	e59f3018 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">24</span><span class="hl sym">]</span>	<span class="hl slc">; 2c &lt;toto+0x2c&gt;</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">14</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">18</span><span class="hl sym">:</span>	e59f3010 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">16</span><span class="hl sym">]</span>	<span class="hl slc">; 30 &lt;toto+0x30&gt;</span>
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">20</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">24</span><span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">28</span><span class="hl sym">:</span>
+  <span class="hl num">2</span>c<span class="hl sym">:</span>
+  <span class="hl num">30</span><span class="hl sym">:</span>
+</pre></p>
+
+<p>arm-none-eabi-gcc -Os -fno-common -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3018 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">24</span><span class="hl sym">]</span>	<span class="hl slc">; 20 &lt;toto+0x20&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e8930005 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r0, r2}</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+   c<span class="hl sym">:</span>	e59f3010 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">16</span><span class="hl sym">]</span>	<span class="hl slc">; 24 &lt;toto+0x24&gt;</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e893000c 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r2, r3}</span>
+  <span class="hl num">14</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+  <span class="hl num">18</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">20</span><span class="hl sym">:</span>
+  <span class="hl num">24</span><span class="hl sym">:</span>
+</pre></p>
+
+<p>arm-none-eabi-gcc -Os -fno-common -fdata-sections -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3028 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">40</span><span class="hl sym">]</span>	<span class="hl slc">; 30 &lt;toto+0x30&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e5930000 	ldr	r0<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e59f3024 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">36</span><span class="hl sym">]</span>	<span class="hl slc">; 34 &lt;toto+0x34&gt;</span>
+   c<span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">14</span><span class="hl sym">:</span>	e59f301c 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">28</span><span class="hl sym">]</span>	<span class="hl slc">; 38 &lt;toto+0x38&gt;</span>
+  <span class="hl num">18</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">20</span><span class="hl sym">:</span>	e59f3014 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">20</span><span class="hl sym">]</span>	<span class="hl slc">; 3c &lt;toto+0x3c&gt;</span>
+  <span class="hl num">24</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">28</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">2</span>c<span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">30</span><span class="hl sym">:</span>
+  <span class="hl num">34</span><span class="hl sym">:</span>
+  <span class="hl num">38</span><span class="hl sym">:</span>
+  <span class="hl num">3</span>c<span class="hl sym">:</span>
+</pre></p>
+
+<p>Note that <strong>-fno-common</strong> can help to generate better code with bss data.</p>
+
+<h3>optimisation</h3>
+
+<ul>
+    <li>2 pass build : detect unused stuff and build and optimised version.</li>
+    <li>linker to patch the generated code ?</li>
+</ul>
+<h2>ffunction-sections overhead</h2>
+
+<p>Gcc sometimes need to use trampoline.</p>
+
+<p>For example on armv4t, there is not blx instruction. codesourcery arm-2011.03 (elf target) generate code like :
+<pre class="hl"><span class="hl num">000</span>c7848 <span class="hl sym">&lt;</span>conf_load_defaults<span class="hl sym">&gt;:</span>
+   c7848<span class="hl sym">:</span>       b538            <span class="hl kwa">push</span>    <span class="hl com">{r3, r4, r5, lr}</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c7870<span class="hl sym">:</span>       f000 f812       <span class="hl kwb">bl</span>      c7898 <span class="hl sym">&lt;</span><u>memcpy_from_thumb<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c7888<span class="hl sym">:</span>       bc01            <span class="hl kwa">pop</span>     <span class="hl com">{r0}</span>
+   c788a<span class="hl sym">:</span>       <span class="hl num">4700</span>            <span class="hl kwb">bx</span>      r0</u></p>
+
+<p><span class="hl num">000</span>c7898 <span class="hl sym">&lt;</span><u>memcpy_from_thumb<span class="hl sym">&gt;:</span>
+   c7898<span class="hl sym">:</span>       <span class="hl num">4778</span>            <span class="hl kwb">bx</span>      pc
+   c789a<span class="hl sym">:</span>       <span class="hl num">46</span>c0            <span class="hl kwa">nop</span>                     <span class="hl slc">; (mov r8, r8)</span>
+   c789c<span class="hl sym">:</span>       eaff630f        b       a04e0 <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+</pre>
+and with ffunction-sections, there is lot's of </u>memcpy_from_thumb in different section and the linker doesn't merge them.</p>
+
+<p>In fact gcc generate
+<pre class="hl"><span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   <span class="hl num">6</span><span class="hl sym">:</span>   f7ff fffe       <span class="hl kwb">bl</span>      <span class="hl num">0</span> <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+</pre>
+and the linker patch the code !!!</p>
+
+<p>Note : there was lot's of <u>memcpy_from_thumb if we din't merge .text* in the linker script.</u></p>
+
+<h3>armv5t</h3>
+
+<p>using armv5t, we got
+<pre class="hl"><span class="hl num">000</span>c538c <span class="hl sym">&lt;</span>conf_load_defaults<span class="hl sym">&gt;:</span>
+   c538c<span class="hl sym">:</span>       b538            <span class="hl kwa">push</span>    <span class="hl com">{r3, r4, r5, lr}</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c53b4<span class="hl sym">:</span>       f7da eea4       blx     a0100 <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c53c8<span class="hl sym">:</span>       bd38            <span class="hl kwa">pop</span>     <span class="hl com">{r3, r4, r5, pc}</span>
+</pre></p>
+
+<h1>other optimisation</h1>
+
+<h2>build one big source file</h2>
+
+<p>make static the default stuff :</p>
+
+<ul>
+    <li>-fwhole-program</li>
+</ul>
+<p>agregate all source file in one :</p>
+
+<ul>
+    <li>-combine</li>
+</ul>
+<p>Eat lot's of memory</p>
+
+<h2>LTO</h2>
+
+<h1>Extra notes</h1>
+
+<h2>script to compare code</h2>
+
+<p>For comparing function size of 2 binaries, we can use</p>
+
+<pre>
+readelf -W -s prog1.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk '{ print $3" "$8 }' &gt; dump1
+readelf -W -s prog2.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk '{ print $3" "$8 }' &gt; dump2
+diff -u dump1 dump2
+</pre>
+
+<h2>Thumb interworking</h2>
+
+<p>http://wiki.debian.org/ArmEabiPort#Choice_of_minimum_CPU</p>
+
+<p>Instruction safe for interworking :</p>
+
+<ol>
+    <li>mov pc,lr : starting armv7</li>
+    <li>bx lr : starting armv4t</li>
+    <li>ldm/ldr : starting armv5t</li>
+    <li>blx : starting armv5t</li>
+</ol>
+<p>This is a shame that arm did add thumb support from the start for normal branch operation</p>
+
+
+</div>
+
+
+
+<div id="comments">
+
+
+
+
+<div class="addcomment">Comments on this page are closed.</div>
+
+</div>
+
+
+
+</div>
+
+<div id="footer" class="pagefooter">
+
+<div id="pageinfo">
+
+
+<div class="tags">
+Tags:
+
+<a href="../../tags/embeded/" rel="tag">embeded</a>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="date">Fri Jul  8 23:58:05 2011</span>
+<!-- Created <span class="date">Thu Jun 16 22:51:18 2011</span> -->
+</div>
+
+</div>
+
+
+<!-- from myblog -->
+</div>
+
+</div>
+
+</body>
+</html>

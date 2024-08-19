@@ -1,0 +1,1967 @@
+<?xml version="1.0"?>
+<rss version="2.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/" >
+<channel>
+<title>RecentChanges</title>
+<link>http://mat-laptop/~mat/myblog/recentchanges/</link>
+<description>myblog</description>
+<item>
+
+	<title>castet.matthieu: change to posts/link_gc on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_95cf040e1122635ccdd231046f477b095187ca4f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-95cf040e1122635ccdd231046f477b095187ca4f</link>
+
+	<pubDate>Fri, 08 Jul 2011 23:57:52 +0200</pubDate>
+	<dcterms:modified>2011-07-08T21:57:52Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-95cf040e1122635ccdd231046f477b095187ca4f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/link gc
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:57:52 07/08/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+update&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/hp_debian_install on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_cdac2332e06ff9504082ea031838219affc7a6af/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-cdac2332e06ff9504082ea031838219affc7a6af</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:34:39 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:34:39Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-cdac2332e06ff9504082ea031838219affc7a6af&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/hp debian install
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:34:39 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+fix formating&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/hp_debian_install on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_64a67077a9850056cb86f682526d214cdd3b4027/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-64a67077a9850056cb86f682526d214cdd3b4027</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:32:47 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:32:47Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-64a67077a9850056cb86f682526d214cdd3b4027&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/hp debian install
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:32:47 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+update date&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/link_gc on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_8a319398cda03e830c2e3004edac421bba888958/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-8a319398cda03e830c2e3004edac421bba888958</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:26:45 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:26:45Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-8a319398cda03e830c2e3004edac421bba888958&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/link gc
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:26:45 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+fix verbatim&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/link_gc on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_f681ae9d4f09cdd11e1115ac9cd5e28ab330611c/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-f681ae9d4f09cdd11e1115ac9cd5e28ab330611c</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:25:46 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:25:46Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-f681ae9d4f09cdd11e1115ac9cd5e28ab330611c&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/link gc
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:25:46 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+update&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/link_gc on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_c5d161202292e9abb1b9a8dca96f9ef615fd1ead/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-c5d161202292e9abb1b9a8dca96f9ef615fd1ead</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:23:46 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:23:46Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-c5d161202292e9abb1b9a8dca96f9ef615fd1ead&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/link gc
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:23:46 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+update&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/link_gc on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_6e4e7f919da022040b27efab29ebd8f04b7cea4f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-6e4e7f919da022040b27efab29ebd8f04b7cea4f</link>
+
+	<pubDate>Sun, 03 Jul 2011 01:22:17 +0200</pubDate>
+	<dcterms:modified>2011-07-02T23:22:17Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-6e4e7f919da022040b27efab29ebd8f04b7cea4f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/link gc
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;01:22:17 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+first version&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/hp_debian_install on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_a17fb90611c422afe16a75f5300d2eaa0d0ee53f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-a17fb90611c422afe16a75f5300d2eaa0d0ee53f</link>
+
+	<pubDate>Sun, 03 Jul 2011 00:27:41 +0200</pubDate>
+	<dcterms:modified>2011-07-02T22:27:41Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-a17fb90611c422afe16a75f5300d2eaa0d0ee53f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/hp debian install
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;00:27:41 07/03/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+hp work installation&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/fatfs on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_5ac65b320d8535ba222ccfe51d709132ee8d7f1f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-5ac65b320d8535ba222ccfe51d709132ee8d7f1f</link>
+
+	<pubDate>Fri, 29 Apr 2011 23:06:12 +0200</pubDate>
+	<dcterms:modified>2011-04-29T21:06:12Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-5ac65b320d8535ba222ccfe51d709132ee8d7f1f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/fatfs
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:06:12 04/29/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+fatfs&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation2 on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_16141e3bc4480a5f313b7d9dbbb4492dd7c9b956/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-16141e3bc4480a5f313b7d9dbbb4492dd7c9b956</link>
+
+	<pubDate>Fri, 29 Apr 2011 23:05:34 +0200</pubDate>
+	<dcterms:modified>2011-04-29T21:05:34Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-16141e3bc4480a5f313b7d9dbbb4492dd7c9b956&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation2
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:05:34 04/29/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+power 2 optim&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_0f24c7741b37ae753a668da6f4b39740c7cfe2a5/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-0f24c7741b37ae753a668da6f4b39740c7cfe2a5</link>
+
+	<pubDate>Thu, 28 Apr 2011 22:33:15 +0200</pubDate>
+	<dcterms:modified>2011-04-28T20:33:15Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-0f24c7741b37ae753a668da6f4b39740c7cfe2a5&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;22:33:15 28/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+finish power of 2 optim&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_a8a6c65b084fbd4bf23a49bf6a77e19b2b42cb7f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-a8a6c65b084fbd4bf23a49bf6a77e19b2b42cb7f</link>
+
+	<pubDate>Tue, 26 Apr 2011 23:37:25 +0200</pubDate>
+	<dcterms:modified>2011-04-26T21:37:25Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-a8a6c65b084fbd4bf23a49bf6a77e19b2b42cb7f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:37:25 04/26/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test code inline&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_63506d93f983bf95616f308f4eddee5cff05ff95/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-63506d93f983bf95616f308f4eddee5cff05ff95</link>
+
+	<pubDate>Tue, 26 Apr 2011 23:36:32 +0200</pubDate>
+	<dcterms:modified>2011-04-26T21:36:32Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-63506d93f983bf95616f308f4eddee5cff05ff95&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:36:32 04/26/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+code test&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_a08762741d792f2c6214cd653483648e42db46fa/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-a08762741d792f2c6214cd653483648e42db46fa</link>
+
+	<pubDate>Tue, 26 Apr 2011 23:33:59 +0200</pubDate>
+	<dcterms:modified>2011-04-26T21:33:59Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-a08762741d792f2c6214cd653483648e42db46fa&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;23:33:59 04/26/11&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+doc update&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_e9098556e8d1681dc1dfd0d0d7dae229709b8da5/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-e9098556e8d1681dc1dfd0d0d7dae229709b8da5</link>
+
+	<pubDate>Tue, 26 Apr 2011 22:41:54 +0200</pubDate>
+	<dcterms:modified>2011-04-26T20:41:54Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-e9098556e8d1681dc1dfd0d0d7dae229709b8da5&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;22:41:54 26/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test with new package&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to tags/embeded on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_2101df01e07121d7a65535dfb712335c5a7e91b9/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-2101df01e07121d7a65535dfb712335c5a7e91b9</link>
+
+	<pubDate>Tue, 26 Apr 2011 22:39:02 +0200</pubDate>
+	<dcterms:modified>2011-04-26T20:39:02Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-2101df01e07121d7a65535dfb712335c5a7e91b9&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+tags/embeded
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;22:39:02 26/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+creating tag page tags/embeded&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/2pow_opimisation posts/first_post posts/first_post.mdwn.ex posts/plop posts/plop.mdwn.ex on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_3292593ca092ebb4973871c63f16ad770262880a/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-3292593ca092ebb4973871c63f16ad770262880a</link>
+
+	<pubDate>Tue, 26 Apr 2011 22:38:41 +0200</pubDate>
+	<dcterms:modified>2011-04-26T20:38:41Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-3292593ca092ebb4973871c63f16ad770262880a&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/2pow opimisation
+
+
+
+posts/first post
+
+
+
+posts/first post.mdwn.ex
+
+
+
+posts/plop
+
+
+
+posts/plop.mdwn.ex
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;22:38:41 26/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test creole&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_6774b6cfb0e51079177b3f3daaad6271f2c77f3c/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-6774b6cfb0e51079177b3f3daaad6271f2c77f3c</link>
+
+	<pubDate>Sun, 03 Apr 2011 15:16:34 +0200</pubDate>
+	<dcterms:modified>2011-04-03T13:16:34Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-6774b6cfb0e51079177b3f3daaad6271f2c77f3c&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;15:16:34 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+iiiii&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_6ed47ffc196895bd52ac4ceca0bfd46398220555/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-6ed47ffc196895bd52ac4ceca0bfd46398220555</link>
+
+	<pubDate>Sun, 03 Apr 2011 15:12:56 +0200</pubDate>
+	<dcterms:modified>2011-04-03T13:12:56Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-6ed47ffc196895bd52ac4ceca0bfd46398220555&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;15:12:56 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+iii&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_16ee2c9d9654b788d034ae2fa77be597ba9f6ba5/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-16ee2c9d9654b788d034ae2fa77be597ba9f6ba5</link>
+
+	<pubDate>Sun, 03 Apr 2011 15:06:21 +0200</pubDate>
+	<dcterms:modified>2011-04-03T13:06:21Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-16ee2c9d9654b788d034ae2fa77be597ba9f6ba5&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;15:06:21 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+iiii&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_b4aae36400e37dffb6a86ff3f025ea5f432e52e1/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-b4aae36400e37dffb6a86ff3f025ea5f432e52e1</link>
+
+	<pubDate>Sun, 03 Apr 2011 14:49:01 +0200</pubDate>
+	<dcterms:modified>2011-04-03T12:49:01Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-b4aae36400e37dffb6a86ff3f025ea5f432e52e1&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;14:49:01 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+isfsdf&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_87776a5c758c5aba499776362235b34c9a296ee0/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-87776a5c758c5aba499776362235b34c9a296ee0</link>
+
+	<pubDate>Sun, 03 Apr 2011 14:42:43 +0200</pubDate>
+	<dcterms:modified>2011-04-03T12:42:43Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-87776a5c758c5aba499776362235b34c9a296ee0&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;14:42:43 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+iii&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to archives/2011 archives/2011/01 archives/2011/02 archives/2011/03 archives/2011/04 archives/2011/05 archives/2011/06 archives/2011/07 archives/2011/08 archives/2011/09  on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_8f2c6ad23ff2a0e108205c10d0fa8fb654421a8c/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-8f2c6ad23ff2a0e108205c10d0fa8fb654421a8c</link>
+
+	<pubDate>Sun, 03 Apr 2011 14:41:16 +0200</pubDate>
+	<dcterms:modified>2011-04-03T12:41:16Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-8f2c6ad23ff2a0e108205c10d0fa8fb654421a8c&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+archives/2011
+
+
+
+archives/2011/01
+
+
+
+archives/2011/02
+
+
+
+archives/2011/03
+
+
+
+archives/2011/04
+
+
+
+archives/2011/05
+
+
+
+archives/2011/06
+
+
+
+archives/2011/07
+
+
+
+archives/2011/08
+
+
+
+archives/2011/09
+
+
+
+...
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;14:41:16 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+calendar update&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_2d8853e915900c277971d18789e134a29584ccf0/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-2d8853e915900c277971d18789e134a29584ccf0</link>
+
+	<pubDate>Sun, 03 Apr 2011 14:39:45 +0200</pubDate>
+	<dcterms:modified>2011-04-03T12:39:45Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-2d8853e915900c277971d18789e134a29584ccf0&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;14:39:45 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/first_post on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_e7ca059741f13ba197fd4ef6efc8ac62fd9920b8/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-e7ca059741f13ba197fd4ef6efc8ac62fd9920b8</link>
+
+	<pubDate>Sun, 03 Apr 2011 12:10:39 +0200</pubDate>
+	<dcterms:modified>2011-04-03T10:10:39Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-e7ca059741f13ba197fd4ef6efc8ac62fd9920b8&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/first post
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;12:10:39 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+o&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/first_post on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_9e6c3c70cf69ff5919f12c256640ad61eca935c1/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-9e6c3c70cf69ff5919f12c256640ad61eca935c1</link>
+
+	<pubDate>Sun, 03 Apr 2011 12:09:12 +0200</pubDate>
+	<dcterms:modified>2011-04-03T10:09:12Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-9e6c3c70cf69ff5919f12c256640ad61eca935c1&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/first post
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;12:09:12 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+p&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/first_post on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_a6f6d3a4c58674340c73e45b42e758d26901cb8e/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-a6f6d3a4c58674340c73e45b42e758d26901cb8e</link>
+
+	<pubDate>Sun, 03 Apr 2011 12:08:52 +0200</pubDate>
+	<dcterms:modified>2011-04-03T10:08:52Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-a6f6d3a4c58674340c73e45b42e758d26901cb8e&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/first post
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;12:08:52 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+t&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/first_post on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_44fc4fc6b068a5eb8014beeb8b082258180b74eb/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-44fc4fc6b068a5eb8014beeb8b082258180b74eb</link>
+
+	<pubDate>Sun, 03 Apr 2011 12:03:07 +0200</pubDate>
+	<dcterms:modified>2011-04-03T10:03:07Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-44fc4fc6b068a5eb8014beeb8b082258180b74eb&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/first post
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;12:03:07 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/first_post on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_4f3e4b5b72938778198a9b9a97ff5b57e4135482/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-4f3e4b5b72938778198a9b9a97ff5b57e4135482</link>
+
+	<pubDate>Sun, 03 Apr 2011 12:00:04 +0200</pubDate>
+	<dcterms:modified>2011-04-03T10:00:04Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-4f3e4b5b72938778198a9b9a97ff5b57e4135482&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/first post
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;12:00:04 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test 3&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to tags/life on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_e024d3fe81efbf0b888da461f2ae0759709cb416/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-e024d3fe81efbf0b888da461f2ae0759709cb416</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:58:28 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:58:28Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-e024d3fe81efbf0b888da461f2ae0759709cb416&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+tags/life
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:58:28 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+creating tag page tags/life&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to tags/foo on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_3ebb0d2151f9ab23baab11cd7542aee3eb1188ca/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-3ebb0d2151f9ab23baab11cd7542aee3eb1188ca</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:58:28 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:58:28Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-3ebb0d2151f9ab23baab11cd7542aee3eb1188ca&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+tags/foo
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:58:28 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+creating tag page tags/foo&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to tags/tech on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_786d58142a5a91cb71558e4968ad966702b440a0/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-786d58142a5a91cb71558e4968ad966702b440a0</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:58:28 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:58:28Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-786d58142a5a91cb71558e4968ad966702b440a0&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+tags/tech
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:58:28 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+creating tag page tags/tech&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to tags/linux on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_0bef6c10750d4dfc5e9876d12ae028a1e747f7d4/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-0bef6c10750d4dfc5e9876d12ae028a1e747f7d4</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:58:28 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:58:28Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-0bef6c10750d4dfc5e9876d12ae028a1e747f7d4&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+tags/linux
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:58:28 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+creating tag page tags/linux&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_eb3cd5d22049ebfadcbe6761bdffd98bef8fe4e0/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-eb3cd5d22049ebfadcbe6761bdffd98bef8fe4e0</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:58:22 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:58:22Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-eb3cd5d22049ebfadcbe6761bdffd98bef8fe4e0&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:58:22 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test 2&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to posts/plop on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_92538b23bea6681fc7ba4e52d966cc98e0dc722f/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-92538b23bea6681fc7ba4e52d966cc98e0dc722f</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:46:21 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:46:21Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-92538b23bea6681fc7ba4e52d966cc98e0dc722f&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+posts/plop
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:46:21 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+test&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+<item>
+
+	<title>castet.matthieu: change to .gitignore archives comments index posts posts/first_post sidebar tags on myblog</title>
+	<dcterms:creator>castet.matthieu</dcterms:creator>
+
+
+	<guid>http://mat-laptop/~mat/myblog/recentchanges/change_63e52892f688f085a06788409ee179169e161d37/</guid>
+
+	<link>http://mat-laptop/~mat/myblog/recentchanges/#change-63e52892f688f085a06788409ee179169e161d37</link>
+
+	<pubDate>Sun, 03 Apr 2011 11:36:30 +0200</pubDate>
+	<dcterms:modified>2011-04-03T09:36:30Z</dcterms:modified>
+
+	<description>
+
+
+
+
+
+&lt;div id=&quot;change-63e52892f688f085a06788409ee179169e161d37&quot; class=&quot;metadata&quot;&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed pages:&lt;/span&gt;
+&lt;span class=&quot;pagelinks&quot;&gt;
+
+
+.gitignore
+
+
+
+archives
+
+
+
+comments
+
+
+
+index
+
+
+
+posts
+
+
+
+posts/first post
+
+
+
+sidebar
+
+
+
+tags
+
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Changed by:&lt;/span&gt;
+&lt;span class=&quot;committer&quot;&gt;
+
+castet.matthieu
+
+&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Commit type:&lt;/span&gt;
+&lt;span class=&quot;committype&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;desc&quot;&gt;&lt;br /&gt;Date:&lt;/span&gt;
+&lt;span class=&quot;changedate&quot;&gt;&lt;span class=&quot;date&quot;&gt;11:36:30 03/04/2011&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;changelog&quot;&gt;
+
+
+initial commit&lt;br /&gt;
+
+
+&lt;/div&gt;
+
+
+</description>
+
+
+</item>
+
+</channel>
+</rss>

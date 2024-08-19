@@ -1,0 +1,236 @@
+This is a minimalist blog in french/english. For comment you can use my email address : castet.matthieu <at> free.fr
+
+===============================================================================
+Titre : android tethering without hacking/rooting
+Catégorie : Android
+Date : 11-03-2011
+
+See http://castet.matthieu.free.fr/blog/android_tethering.txt
+
+===============================================================================
+Titre : TI/Omap complexity
+Catégorie : LowLevel
+Date : 11-02-2011
+
+At work I work on a omap processor on Linux. I feel ready bad how their
+infrastructure is complex :
+- they used u-boot, but have to split it because it is too big
+- the kernel is expecting some init from u-boot and will crash/hang if not done
+- their code is too much oriented for their dev board (some driver doing mux select, pads configuration).
+- each board code is very big : lot's of stuff is duplicated
+- their driver try to handle lot's of things, but in the end they are big, buggy
+
+New version of the kernel seems to go in the right direction, but why they didn't do that first ?
+
+We also ported our processor (P6) [1], to linux. Our usage was less complex than
+TI (few power management, simpler controllers), but I am happy we did things simpler :
+- a tiny bootloader that don't need to be splited
+- simple clock handling (on/off) that isn't dynamic (bootloader select it)
+- static mux selection in a array with macro at init time
+- board config shared as much as possible
+- static device selection
+
+Why people doesn't apply KISS [2] ?
+There no point of supporting of the features if it didn't work at the end.
+
+[1] https://projects.ardrone.org/wiki/ardrone-api/Gpl
+[2] http://en.wikipedia.org/wiki/KISS_principle
+
+===============================================================================
+Titre : Linux kernel ugliness
+Catégorie : LowLevel
+Date : 11-02-2011
+
+Linux kernel support lot's of embeded device, but sometimes I believe the
+maintainers don't do their job. It is even more true if it comes from big
+company like intel.
+
+Sometimes ago during the msm usb driver merge, I protested against a driver
+duplication : msm use a tdi/arc/chipidea/mips/synopsys ehci otg. So I
+tell them to use the in tree ci13xxx driver. They did a nice job and used it.
+
+But now if I look at the kernel tree we have 4 duplicate drivers : 
+- fsl_udc_core.c
+- ci13xxx_udc.c
+- langwell_udc.c
+- mv_udc_core.c
+
+And none of them is perfect. What a shame !
+
+I post a mail on linux-usb, but I didn't expect too much of it. Once it is
+in kernel tree, nobody will want to do the merge job.
+
+PS : a similar thing already happened for s3c2410_udc and lh7a40x_udc
+PS2 : did intel really buy a tdi core or it made a clone of it ?
+
+
+===============================================================================
+Titre : Bios Boot
+Catégorie : LowLevel
+Date : 28-12-2010
+
+It is often unclear how traditional x86 pc boot.
+
+The bios load the mbr [1] from the boot disk, and jump on it.
+This is 440 bytes stage1 bootloader and 64 bytes ms-dos primary partition.
+It should end with 0x55AA (signature) at offset 510.
+
+The mbr will scan the primary partition (load by bios) and search for a
+bootable one (there should be only one). It can also parse the extended
+partitions (advanced mbr).
+
+Once the bootable partition is found, a 512 bytes VBR is loaded from the boot
+partition, and we jump on the start of it (stage2 bootloader).
+It should end with 0x55AA (signature) at offset 510 for FAT.
+The format depends of the filesystem. One example is fat [2] where code
+is 448 bytes.
+
+This bootloader will load from the filesystem a (much bigger stage3 bootloader).
+For that it will use the custom features of the filesystem.
+For example stage3 can be store as a special file (system, hidden, imutable)
+that won't be touched by the OS and then a list of (offset,size) can be stored
+in stage2. Then stage2 can load the file, by parsing this list.
+
+Once this done, we have a load a big bootloader that can parse filesystem
+and search for config files, kernel and initrd.
+
+An example of such bootloader is syslinux [3]
+
+NOTE : that some bootloader like grub does unsafe thing. They hijack some
+reserved zone to store for the mbr a bigger stage2. This is referer as
+62 sector gap between mbr and first partition. This was done do make
+partition start on a cylinder/side boundary.
+
+NOTE2 : all this pain is due by the fact that the BIOS only load 512 bytes.
+On embeded system, the ROM (BIOS) often load 32/64K of code. This allow
+to do everything in a stage1.
+
+[1] http://en.wikipedia.org/wiki/Master_boot_record
+[2] http://en.wikipedia.org/wiki/File_Allocation_Table#Boot_Sector
+[3] http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project
+
+===============================================================================
+Titre : ASCII (hexa)decimal number to character
+Catégorie : Shell
+Date : 28-05-2010
+
+I was searching on google a way to transform a character to ASCII number in
+shell (and number to char). I only found solution with tr, gawk or perl.
+
+Here is a simple one (pure posix shell)
+
+#can be extended to support a larger range
+ascii="a b c d e f g h i j k l m n o p q r s t u v w x y z"
+ascii_offset=97
+num_to_ascii()
+{
+	[ $1 -lt $ascii_offset -o $1 -gt $(($ascii_offset + ${#ascii}/2)) ] && exit 1
+	pos=$(($1-$ascii_offset))
+
+	set -- $ascii
+	shift $pos
+	echo $1
+}
+
+ascii_to_num()
+{
+	char=$1
+	pos=$ascii_offset
+	set -- $ascii
+	while [ $# -gt 0 ]
+	do
+		if [ $1 = $char ]
+		then
+			break
+		fi
+		shift
+		pos=$(($pos+1))
+	done
+	[ $# -eq 0 ] && exit 1
+	echo $pos
+}
+
+===============================================================================
+Titre : Cardbus
+Catégorie : Hard
+Date : ?-?-2009
+
+I was wondering what was the different between old pcmcia card and new one.
+The awnser is on http://www.pcmcia.org/faq.htm#cardbuscard
+Old one are 16 bits (ISA style) and new one are 32 bits (pci style).
+
+===============================================================================
+Titre : Hot pixel sur un Canon A710
+Catégorie : APN
+Date : 15-10-2008
+
+Il y a un peu moins de 2 ans, je me suis acheté mon premier APN : un Canon A710
+pour un peu moins de 300 euros.  14 mois après son achat en faisant des tests,
+je me suis aperçu que mon APN avait des hot pixel : sur certaines photo on
+voyait des vilains point rouges, vert ou blanc en zoomant sur certaines zones.
+Le pire c'est qu'après vérification une partie de ces hot pixel était présent
+dès le début (ou j'aurais pu faire marcher la garantie constructeur d'1 an).
+
+En début de semaine, j'ai demandé un devis au SAV Canon sur Paris (Vilma), mais
+la facture s'élève a 100 euros... C'est cher pour un appareil qui en a couté
+300.  En plus ils me dissent devoir changer le capteur (plus le zoom qui ne fait
+qu'un avec le capteur), alors qu'une recherche sur le net fait pensé qu'ils
+peuvent se contenter de remappé les pixels morts sur des pixels voisins.
+
+Heureusement sous Linux, il existe des softs pour palier à ces problèmes.  Tout
+d'abord jpegpixi [1], qui permet de réparer les photos déjà prises (et aussi les
+futures). C'est un logiciel qui va éditer le fichier jpeg, pour le modifier que
+les zonnes ou se trouve les pixels morts et éviter de trop altérer la photo par
+une recompression complète.  Mais la conversion bayer vers rgb et la compression
+jpeg sont déja passé par là et ont eu pour conséquence d'étaler le pixel mort.
+En effet la conversion bayer[2] vers rgb va interpoler notre mauvais pixel sur
+plusieurs pixel de l'image rgb. De même la compression jpeg va lisser notre
+point de couleur sur plusieurs pixel autour.
+
+Mais pour les APN Canon il existe un logiciel magique : chdk [3] [4]. Cet outil
+va "véroller" le logiciel qui tourne sur votre appareil pour ajouter des
+fonctionnalité en plus. Il permet notamment de remapper les hot pixel [5],
+directement en sortie du capteur (ie avant la conversion rgb et la compression
+jpeg).  C'est l'équivalent du remapage par Canon du capteur, le tout pour 0 euro
+et sans devoir envoyer son appareil :)
+
+
+[1] http://www.zero-based.org/software/jpegpixi/
+[2] http://en.wikipedia.org/wiki/Bayer_filter
+[3] http://chdk.wikia.com/wiki/CHDK
+[4] https://tools.assembla.com/chdk/
+[5] http://chdk.wikia.com/wiki/CHDK_firmware_usage/AllBest#Hot-Pixel_Removal_.28Build_100-16_and_later.29
+===============================================================================
+Titre : tente go sport cusco 3 30 euros
+Catégorie : Rando
+Date : 15-10-2008
+
+Ce printemps (fin mai) je suis parti en corse pour 1 semaine et demi.  Prévoyant
+de faire du camping, j'ai acheté une tente cusco 3 chez go sport.  Cette tente
+était pas cher 30 euros et assez légère (moins de 4 Kg).  Elle ne fait plus
+partie du catalogue go sport, mais c'est l'équivalent 3 places de Andes 2. Après
+une montage il s'avère que la finition est très moyenne (du bon produit chinois)
+: a l'intérieur le certain fils de nylon pendouille, et il manque une attache
+pour maintenir la chambre intérieure.
+
+A l'utilisation, elle se monte assez simplement et son large auvent est
+agréable.  On regrettera par contre que le haut de la chambre intérieure soit
+constitué d'une moustiquaire au lieu d'un matériaux respirant. En effet celle ci
+laisse passer beaucoup d'air et parfois la pluie (voir plus bas).
+
+Le toit imperméable est un peu juste et ne dépend pas assez bas. Il m'est arrivé
+une mésaventure le dernier jour. Un chat du camping a voulu visité ma tente et a
+réussit a passé entre le double toit. Il a laissé de belle trace de grille sur
+la chambre en nylon.
+
+En corse j'ai pu testé a fond l'imperméabilité. En effet j'étais à ajaccio le
+30mai 2008 lors du record précipitation : plus de pluie en 24h qu'en un mois
+d'habitude. Et ben la conclusion, c'est que cette tente n'est pas parfaitement
+imperméable. Le toit a tendance a s'imbiber d'eau et à goutter à l'intérieur.
+Et malheur comme la chambre intérieure est constitué d'une moustiquaire l'eau
+passe à travers au lieu d'être absorbée.
+
+Bref pour 30 euros il ne fallait pas s'attendre à une tente de compétition.
+
+
+[1] http://www.go-sport.com/fiche-technique-Randonnée_2008-96-CAMPING-2909-GO_SPORT-ANDES_2_08-18996.html

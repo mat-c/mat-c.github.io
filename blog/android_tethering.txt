@@ -1,0 +1,73 @@
+We will explain how to do tethering on android phones without rooting them
+or using android options.
+
+
+====== USB and BT tethering over ppp =======
+This is mainly what does pdanet application.
+
+The idea of tethering is not new, it was done on old unix server where you got
+a remote shell. One program do do that is called slirp : 
+http://slirp.sourceforge.net/ (Note today people use ssh and -D option that 
+allow to do socks tunneling. There is also -L/-R options).
+What is slirp ?
+Slirp emulates a PPP or SLIP connection over a normal terminal. 
+What does it means ?
+
+When you you a real ppp connection, pppd (or slirp tools) need to be run as 
+root to create a network interface (and the kernel should support this 
+interface).
+This is avoided by working like a proxy. The pppd protocol are decapsulated to
+IP and for each tcp/udp connection and new one is created with a socket.
+For icmp only ping (ICMP_ECHO) can be emulated by udp ping.
+
+
+slirp was done to build on most of unix, so it is not a problem to build on
+bionic. The main problem comes from :
+* -lcrypt and -lnsl does not exist. We need to provide a fake crypt function
+  because we are not interrested in auth.
+* conflict with _P macro that is also present in system headers
+
+Once it build there is another problem. It comes from IP/dns detection.
+slirp try to guess IP by doing gethostbyname(gethostname()), whitch return
+127.0.0.1. Dns come from resolv.conf whitch doesn't exist on android (use
+on property).
+You can overide this address by another one (only need to be
+the phone one for avanced emulation) with \"host addr 192.168.0.7\".
+There is one problem, ppp doesn't use it and redo the autodetection
+in setipdefault.
+
+There is no dns emulator/proxy so the dns entry should be valid.
+A public dns could be used or you could extract them from property.
+
+Once you have done that, you could try usb tethering using adb :
+$ adb push slirp /data/local/tmp/
+$ sudo   adb  ppp "shell:cd /data/local/tmp/; HOME=/data/local/tmp /data/local/tmp/slirp -dppp \"host addr 192.168.0.x\" \"dns 8.8.8.8 \" -P " defaultroute debug logfile /tmp/ppp.log local noauth notty nodetach usepeerdns
+
+For doing bluetooth tethering more work is need. You need to create a 
+BT application (mostly widget) that implement a RFCOM server (see
+http://developer.android.com/guide/topics/wireless/bluetooth.html).
+The name of the service should be "DUN".
+AT command should be ignored (return OK), and slirp started on CONNECT.
+
+It could be nice to develop an opensource pdanet application based on that.
+
+
+============== USB and WIFI tethering over ssh ===============
+
+Install a ssh server on your phone. You can use dropbear for example.
+If you don't want to rebuild it, you can install sshdroid.
+
+Then use ssh -D option to create a Socks proxy and connect to your phone.
+
+Over wifi, that easy :
+ssh -D :1234 -p 2222 root@192.168.x.x
+
+Over usb, you should use adb to start dropbear (sshdroid refuse to start it,
+without wifi, and may bind ssh server to wifi) and then forward ssh port
+from pc to android.
+
+ssh -D :1234 -p 2222 root@local
+
+
+PS : nothing prevent you to do the same trick over BT, but the interrest of BT
+is to connect device that support only DUN profile. A pc will use wifi or usb...

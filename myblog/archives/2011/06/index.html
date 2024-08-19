@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>06</title>
+
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../../../local.css" type="text/css" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../../../">myblog</a>/ 
+
+<a href="../../">archives</a>/ 
+
+<a href="../">2011</a>/ 
+
+</span>
+<span class="title">
+06
+
+</span>
+</span>
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+
+<li><a href="../../../recentchanges/">RecentChanges</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<div class="sidebar">
+<div><div class="calendar"><table class="month-calendar">
+    <tr>
+    <th class="month-calendar-arrow"><a href="../05/" title="May">&larr;</a></th>
+    <th class="month-calendar-head" colspan="5"><span class="selflink">Jun 2011</span></th>
+    <th class="month-calendar-arrow"><a href="../07/" title="July">&rarr;</a></th>
+    </tr>
+    <tr>
+        <th class="month-calendar-day-head Sunday" title="Sunday">S</th>
+        <th class="month-calendar-day-head Monday" title="Monday">M</th>
+        <th class="month-calendar-day-head Tuesday" title="Tuesday">T</th>
+        <th class="month-calendar-day-head Wednesday" title="Wednesday">W</th>
+        <th class="month-calendar-day-head Thursday" title="Thursday">T</th>
+        <th class="month-calendar-day-head Friday" title="Friday">F</th>
+        <th class="month-calendar-day-head Saturday" title="Saturday">S</th>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-noday Sunday">&nbsp;</td>
+        <td class="month-calendar-day-noday Monday">&nbsp;</td>
+        <td class="month-calendar-day-noday Tuesday">&nbsp;</td>
+        <td class="month-calendar-day-nolink Wednesday">1</td>
+        <td class="month-calendar-day-nolink Thursday">2</td>
+        <td class="month-calendar-day-nolink Friday">3</td>
+        <td class="month-calendar-day-nolink Saturday">4</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">5</td>
+        <td class="month-calendar-day-nolink Monday">6</td>
+        <td class="month-calendar-day-nolink Tuesday">7</td>
+        <td class="month-calendar-day-nolink Wednesday">8</td>
+        <td class="month-calendar-day-nolink Thursday">9</td>
+        <td class="month-calendar-day-nolink Friday">10</td>
+        <td class="month-calendar-day-link Saturday"><a href="../../../posts/hp_debian_install/" title="hp debian install">11</a></td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">12</td>
+        <td class="month-calendar-day-nolink Monday">13</td>
+        <td class="month-calendar-day-nolink Tuesday">14</td>
+        <td class="month-calendar-day-nolink Wednesday">15</td>
+        <td class="month-calendar-day-link Thursday"><a href="../../../posts/link_gc/" title="link gc">16</a></td>
+        <td class="month-calendar-day-nolink Friday">17</td>
+        <td class="month-calendar-day-nolink Saturday">18</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">19</td>
+        <td class="month-calendar-day-nolink Monday">20</td>
+        <td class="month-calendar-day-nolink Tuesday">21</td>
+        <td class="month-calendar-day-nolink Wednesday">22</td>
+        <td class="month-calendar-day-nolink Thursday">23</td>
+        <td class="month-calendar-day-nolink Friday">24</td>
+        <td class="month-calendar-day-nolink Saturday">25</td>
+    </tr>
+    <tr>
+        <td class="month-calendar-day-nolink Sunday">26</td>
+        <td class="month-calendar-day-nolink Monday">27</td>
+        <td class="month-calendar-day-nolink Tuesday">28</td>
+        <td class="month-calendar-day-nolink Wednesday">29</td>
+        <td class="month-calendar-day-nolink Thursday">30</td>
+        <td class="month-calendar-day-noday Friday">&nbsp;</td>
+        <td class="month-calendar-day-noday Saturday">&nbsp;</td>
+    </tr>
+</table>
+</div></div>
+
+</div>
+
+
+<div id="pagebody">
+
+<div id="content">
+<div class="inlinepage">
+
+<div class="inlineheader">
+
+<span class="header">
+
+<a href="../../../posts/hp_debian_install/">hp debian install</a>
+
+</span>
+</div>
+
+<div class="inlinecontent">
+<p>Installation of debian on hp elitebook</p>
+
+<h2>Partition</h2>
+
+<p>The pc got 4 primary partition :
+<strong> 300M Win7 boot
+</strong> 220G Win7 C:
+<strong> 40G HP_RESCUE
+</strong> 2G HP_TOOLS for efi stuff : <a href="http://h20000.www2.hp.com/bc/docs/support/SupportManual/c01564727/c01564727.pdf?jumpid=reg_R1002_USEN">http://h20000.www2.hp.com/bc/docs/support/SupportManual/c01564727/c01564727.pdf?jumpid=reg_R1002_USEN</a></p>
+
+<p>I want to keep all the partition and install linux, for that :</p>
+
+<ul>
+    <li>we need to destroy one primary partition to create an extended one</li>
+    <li>we choose HP_TOOLS, that could be in extended one</li>
+    <li>we skrink Win7 C: (using windows tools), but because of an unmovable file we can get only 110G free</li>
+    <li>we don't care getting 2G of delete HP_TOOLS</li>
+</ul>
+<p>So we got :</p>
+
+<ul>
+    <li>300M Win7 boot</li>
+    <li>110G Win7 C:</li>
+    <li>extended</li>
+<ul>
+    <li>106G linux</li>
+    <li>2G swap</li>
+    <li>2G HP_TOOLS</li>
+</ul>
+    <li>40G HP_RESCUE</li>
+    <li>2G free</li>
+</ul>
+<h2>Debian installer (testing) : encryption</h2>
+
+<p>I tried to encrypt my system, but this is a mess :</p>
+
+<ul>
+    <li>the installer want the swap encrypted</li>
+    <li>in order to support suspend to disk, we can't set random to the key
+and we need special setup</li>
+    <li>in case of error, all the install process need to be restarted</li>
+</ul>
+<p>In the end, I created a /, /home and swap partition without encryption.
+Encryption will be done later.</p>
+
+<h2>bootloader</h2>
+
+<p>I don't want that grub mess with mbr.</p>
+
+<p>I told grub to install in the / partition (the install help is wrong :
+it tells that sda2 is (hd0,2) but it is (hd0,1)</p>
+
+<p>As recommended I used easyBCD :
+http://doc.ubuntu-fr.org/tutoriel/comment_amorcer_ubuntu_avec_bootmgr</p>
+
+<p>But it is buggy : it removed the Win7 entry (after some manipulation,
+I had to restore it by hand).</p>
+
+<p>NOTE : this tools gpl software (grub4dos), without giving credit/source.</p>
+
+<p>NOTE2 : does grub update work ? Does easyBCD copy some part of the bootloader
+on windows partition ?</p>
+
+<h3>Alternative</h3>
+
+<ul>
+    <li>make the grub partition a bootable one, and hope mbr will use it</li>
+<ul>
+    <li>the syslinux mbr can be used if the default one doesn't work</li>
+    <li>this will make all the chain mbr + grub opensource and don't depend of
+windows partition</li>
+</ul>
+</ul>
+<p>But does windows can be on a partition that it is not bootable ?</p>
+
+<ul>
+    <li>use a mbr with hardcoded partition</li>
+</ul>
+<h2>touchpad</h2>
+
+<p>After booting on Linux the touchpad doesn't work with xorg (work with gpm).
+There is detection failure.</p>
+
+<h2>encryption</h2>
+
+<p>Finally I used the hp "DriveLock" feature.</p>
+
+<p>What is it ?</p>
+
+<p>It use the ATA-3 password feature (in high mode) :
+ftp://ftp.compaq.com/pub/supportinformation/papers/na118a0598.pdf</p>
+
+<p>With that specification, a password need to be entered to unlock the drive when
+it is power-on.</p>
+
+<p>So without the password, the disk should be not usable. But some of them got backdoors
+or you can dismantle the disk and read the magnetic cylinder.</p>
+
+<p>But this should be enough to prevent robber to access my data.</p>
+
+<p>Note : HP cache the password to not enter it again on suspend to ram.</p>
+
+
+</div>
+
+<div class="inlinefooter">
+
+<span class="pagedate">
+Posted <span class="date">Sat Jun 11 00:00:00 2011</span>
+</span>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+<div class="inlinepage">
+
+<div class="inlineheader">
+
+<span class="author">
+
+Matthieu Castet
+
+</span>
+
+<span class="header">
+
+<a href="../../../posts/link_gc/">garbage collection</a>
+
+</span>
+</div>
+
+<div class="inlinecontent">
+<h1>link garbage collection</h1>
+
+<p>link gc can be activated with :</p>
+
+<pre>
+CFLAGS+=-fdata-sections -fno-common
+CFLAGS+=-ffunction-sections
+LDOPTS+=-Wl,--gc-sections -Wl,--print-gc-sections -Wl,--entry=entry
+</pre>
+
+<p>The compiler (CFLAGS) options will make each function it is own section.
+The linker (LDOPTS) option will make the linker, include all code/date
+used by the entry function, and garbage collect all other code.</p>
+
+<p>These option can be a win on large project, but this imply overhead in code.</p>
+
+<p>In the normal mode, gcc put all code/data of a file in one section. And in this
+section stuff can't be moved by the linker.</p>
+
+<p>But now gcc don't know how the linker will organise section and can cause
+overhead.</p>
+
+<h2>fdata-sections overhead</h2>
+
+<p>For example it will incread code size when accessing global data :</p>
+
+<p><pre class="hl"><span class="hl kwb">int</span> bar<span class="hl sym">;</span>
+<span class="hl kwb">int</span> titi<span class="hl sym">;</span>
+<span class="hl kwb">int</span> tata<span class="hl sym">=</span><span class="hl num">1</span><span class="hl sym">;</span>
+<span class="hl kwb">int</span> foo<span class="hl sym">=</span><span class="hl num">2</span><span class="hl sym">;</span></p>
+
+<p><span class="hl kwb">int</span> <span class="hl kwd">toto</span><span class="hl sym">(</span><span class="hl kwb">void</span><span class="hl sym">)</span>
+<span class="hl sym">{</span>
+    <span class="hl kwa">return</span> foo<span class="hl sym">+</span>tata<span class="hl sym">+</span>titi<span class="hl sym">+</span>bar<span class="hl sym">;</span>
+<span class="hl sym">}</span>
+</pre>
+bar and titi are in bss
+tata and foo in data</p>
+
+<p>arm-none-eabi-gcc -Os -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3020 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">32</span><span class="hl sym">]</span>	<span class="hl slc">; 28 &lt;toto+0x28&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e8930005 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r0, r2}</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+   c<span class="hl sym">:</span>	e59f3018 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">24</span><span class="hl sym">]</span>	<span class="hl slc">; 2c &lt;toto+0x2c&gt;</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">14</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">18</span><span class="hl sym">:</span>	e59f3010 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">16</span><span class="hl sym">]</span>	<span class="hl slc">; 30 &lt;toto+0x30&gt;</span>
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">20</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">24</span><span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">28</span><span class="hl sym">:</span>
+  <span class="hl num">2</span>c<span class="hl sym">:</span>
+  <span class="hl num">30</span><span class="hl sym">:</span>
+</pre></p>
+
+<p>arm-none-eabi-gcc -Os -fno-common -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3018 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">24</span><span class="hl sym">]</span>	<span class="hl slc">; 20 &lt;toto+0x20&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e8930005 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r0, r2}</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+   c<span class="hl sym">:</span>	e59f3010 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">16</span><span class="hl sym">]</span>	<span class="hl slc">; 24 &lt;toto+0x24&gt;</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e893000c 	ldm	r3<span class="hl sym">,</span> <span class="hl com">{r2, r3}</span>
+  <span class="hl num">14</span><span class="hl sym">:</span>	e0800002 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r2
+  <span class="hl num">18</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">20</span><span class="hl sym">:</span>
+  <span class="hl num">24</span><span class="hl sym">:</span>
+</pre></p>
+
+<p>arm-none-eabi-gcc -Os -fno-common -fdata-sections -c
+<pre class="hl"><span class="hl num">00000000</span> <span class="hl sym">&lt;</span>toto<span class="hl sym">&gt;:</span>
+   <span class="hl num">0</span><span class="hl sym">:</span>	e59f3028 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">40</span><span class="hl sym">]</span>	<span class="hl slc">; 30 &lt;toto+0x30&gt;</span>
+   <span class="hl num">4</span><span class="hl sym">:</span>	e5930000 	ldr	r0<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+   <span class="hl num">8</span><span class="hl sym">:</span>	e59f3024 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">36</span><span class="hl sym">]</span>	<span class="hl slc">; 34 &lt;toto+0x34&gt;</span>
+   c<span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">10</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">14</span><span class="hl sym">:</span>	e59f301c 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">28</span><span class="hl sym">]</span>	<span class="hl slc">; 38 &lt;toto+0x38&gt;</span>
+  <span class="hl num">18</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">1</span>c<span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">20</span><span class="hl sym">:</span>	e59f3014 	ldr	r3<span class="hl sym">, [</span>pc<span class="hl sym">,</span> #<span class="hl num">20</span><span class="hl sym">]</span>	<span class="hl slc">; 3c &lt;toto+0x3c&gt;</span>
+  <span class="hl num">24</span><span class="hl sym">:</span>	e5933000 	ldr	r3<span class="hl sym">, [</span>r3<span class="hl sym">]</span>
+  <span class="hl num">28</span><span class="hl sym">:</span>	e0800003 	<span class="hl kwa">add</span>	r0<span class="hl sym">,</span> r0<span class="hl sym">,</span> r3
+  <span class="hl num">2</span>c<span class="hl sym">:</span>	e12fff1e 	<span class="hl kwb">bx</span>	lr
+  <span class="hl num">30</span><span class="hl sym">:</span>
+  <span class="hl num">34</span><span class="hl sym">:</span>
+  <span class="hl num">38</span><span class="hl sym">:</span>
+  <span class="hl num">3</span>c<span class="hl sym">:</span>
+</pre></p>
+
+<p>Note that <strong>-fno-common</strong> can help to generate better code with bss data.</p>
+
+<h3>optimisation</h3>
+
+<ul>
+    <li>2 pass build : detect unused stuff and build and optimised version.</li>
+    <li>linker to patch the generated code ?</li>
+</ul>
+<h2>ffunction-sections overhead</h2>
+
+<p>Gcc sometimes need to use trampoline.</p>
+
+<p>For example on armv4t, there is not blx instruction. codesourcery arm-2011.03 (elf target) generate code like :
+<pre class="hl"><span class="hl num">000</span>c7848 <span class="hl sym">&lt;</span>conf_load_defaults<span class="hl sym">&gt;:</span>
+   c7848<span class="hl sym">:</span>       b538            <span class="hl kwa">push</span>    <span class="hl com">{r3, r4, r5, lr}</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c7870<span class="hl sym">:</span>       f000 f812       <span class="hl kwb">bl</span>      c7898 <span class="hl sym">&lt;</span><u>memcpy_from_thumb<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c7888<span class="hl sym">:</span>       bc01            <span class="hl kwa">pop</span>     <span class="hl com">{r0}</span>
+   c788a<span class="hl sym">:</span>       <span class="hl num">4700</span>            <span class="hl kwb">bx</span>      r0</u></p>
+
+<p><span class="hl num">000</span>c7898 <span class="hl sym">&lt;</span><u>memcpy_from_thumb<span class="hl sym">&gt;:</span>
+   c7898<span class="hl sym">:</span>       <span class="hl num">4778</span>            <span class="hl kwb">bx</span>      pc
+   c789a<span class="hl sym">:</span>       <span class="hl num">46</span>c0            <span class="hl kwa">nop</span>                     <span class="hl slc">; (mov r8, r8)</span>
+   c789c<span class="hl sym">:</span>       eaff630f        b       a04e0 <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+</pre>
+and with ffunction-sections, there is lot's of </u>memcpy_from_thumb in different section and the linker doesn't merge them.</p>
+
+<p>In fact gcc generate
+<pre class="hl"><span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   <span class="hl num">6</span><span class="hl sym">:</span>   f7ff fffe       <span class="hl kwb">bl</span>      <span class="hl num">0</span> <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+</pre>
+and the linker patch the code !!!</p>
+
+<p>Note : there was lot's of <u>memcpy_from_thumb if we din't merge .text* in the linker script.</u></p>
+
+<h3>armv5t</h3>
+
+<p>using armv5t, we got
+<pre class="hl"><span class="hl num">000</span>c538c <span class="hl sym">&lt;</span>conf_load_defaults<span class="hl sym">&gt;:</span>
+   c538c<span class="hl sym">:</span>       b538            <span class="hl kwa">push</span>    <span class="hl com">{r3, r4, r5, lr}</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c53b4<span class="hl sym">:</span>       f7da eea4       blx     a0100 <span class="hl sym">&lt;</span>memcpy<span class="hl sym">&gt;</span>
+<span class="hl sym">[</span>&hellip;<span class="hl sym">]</span>
+   c53c8<span class="hl sym">:</span>       bd38            <span class="hl kwa">pop</span>     <span class="hl com">{r3, r4, r5, pc}</span>
+</pre></p>
+
+<h1>other optimisation</h1>
+
+<h2>build one big source file</h2>
+
+<p>make static the default stuff :</p>
+
+<ul>
+    <li>-fwhole-program</li>
+</ul>
+<p>agregate all source file in one :</p>
+
+<ul>
+    <li>-combine</li>
+</ul>
+<p>Eat lot's of memory</p>
+
+<h2>LTO</h2>
+
+<h1>Extra notes</h1>
+
+<h2>script to compare code</h2>
+
+<p>For comparing function size of 2 binaries, we can use</p>
+
+<pre>
+readelf -W -s prog1.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk '{ print $3" "$8 }' &gt; dump1
+readelf -W -s prog2.elf | grep FUNC | sort -k8 | sort -n -s -k 3,3 | awk '{ print $3" "$8 }' &gt; dump2
+diff -u dump1 dump2
+</pre>
+
+<h2>Thumb interworking</h2>
+
+<p>http://wiki.debian.org/ArmEabiPort#Choice_of_minimum_CPU</p>
+
+<p>Instruction safe for interworking :</p>
+
+<ol>
+    <li>mov pc,lr : starting armv7</li>
+    <li>bx lr : starting armv4t</li>
+    <li>ldm/ldr : starting armv5t</li>
+    <li>blx : starting armv5t</li>
+</ol>
+<p>This is a shame that arm did add thumb support from the start for normal branch operation</p>
+
+
+</div>
+
+<div class="inlinefooter">
+
+<span class="pagedate">
+Posted <span class="date">Thu Jun 16 22:51:18 2011</span>
+</span>
+
+
+<span class="tags">
+Tags:
+
+<a href="../../../tags/embeded/" rel="tag">embeded</a>
+
+</span>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+<div id="footer" class="pagefooter">
+
+<div id="pageinfo">
+
+
+
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="date">Sun Apr  3 14:44:24 2011</span>
+<!-- Created <span class="date">Sun Apr  3 14:41:16 2011</span> -->
+</div>
+
+</div>
+
+
+<!-- from myblog -->
+</div>
+
+</div>
+
+</body>
+</html>
